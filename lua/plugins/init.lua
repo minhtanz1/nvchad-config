@@ -22,7 +22,7 @@ return {
   		ensure_installed = {
   			"lua-language-server", "stylua",
   			"html-lsp", "css-lsp" , "prettier",
-        "clangd"
+        "clangd", "pyright", "mypy", "ruff"
   		},
   	},
   },
@@ -32,9 +32,15 @@ return {
   	opts = {
   		ensure_installed = {
   			"vim", "lua", "vimdoc",
-       "html", "css", "cpp"
+       "html", "css", "cpp", "python"
   		},
   	},
+  },
+  {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require "../configs/null-ls.lua"
+        end,
   },
   {
     "vyfor/cord.nvim",
@@ -52,12 +58,12 @@ return {
         editor = {
           image = nil,
           client = 'neovim',
-          tooltip = 'Neoim/Arch Linux 🐧',
+          tooltip = 'Neovim/Arch Linux 🐧',
         },
         display = {
           show_time = true,
           show_repository = true,
-          show_cursor_position = false,
+          show_cursor_position = true,
           swap_fields = false,
           swap_icons = false,
           workspace_blacklist = {},
@@ -89,6 +95,10 @@ return {
             label = 'View Repository',
             url = 'git',
           },
+          {
+            label = 'Arch Linux',
+            url = 'https://archlinux.org/'
+          }
         },
         assets = nil,
         }

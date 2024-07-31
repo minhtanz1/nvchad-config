@@ -5,19 +5,20 @@ M.ui = {
   theme = "decay",
 
   hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
+    Visual = {bg="#969696"},
+    Comment = { italic = true, fg = "sun" },
+    ["@comment"] = { italic = true , link = "Comment"},
     StatusLine = { bg = "NONE" },
     NvDashAscii = {fg = "none", bg = "none",},
     NvDashButtons = { bg = "NONE" },
   },
 
-  transparency = false,
+  transparency = true,
   statusline = {
-    theme = "default", -- default/vscode/vscode_colored/minimal
+    theme = "vscode", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "round",
+    separator_style = "arrow",
   },
 
   nvdash = {
