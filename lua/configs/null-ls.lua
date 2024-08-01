@@ -1,11 +1,24 @@
-local null_ls = require("null_ls")
-local opts = {
-  sources = {
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.diagnostics.ruff,
-    null_ls.builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "python", "json", "svelte", "cpp" } },
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.black,
-  }
+local null_ls = require "null-ls"
+
+local b = null_ls.builtins
+
+local sources = {
+
+  -- webdev stuff
+  b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  b.formatting.prettier.with { filetypes = { "html", "css", "python", "json", "cpp" } }, -- so prettier works only on these filetypes
+
+  -- Lua
+  -- b.formatting.stylua,
+  -- b.formatting.black,
+  -- cpp
+  b.formatting.clang_format,
+  b.diagnostics.mypy,
+  b.diagnostics.ruff,
 }
-return opts
+
+null_ls.setup {
+  debug = true,
+  sources = sources,
+}
+
