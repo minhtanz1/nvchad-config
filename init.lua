@@ -32,8 +32,12 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+
 require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
 end)
+local g = vim.g
+local spath = vim.fn.stdpath "config" .. "/snippet"
+g.vscode_snippets_path = spath

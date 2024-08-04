@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-  theme = "decay",
+  theme = "tokyonight",
 
   hl_override = {
     Visual = {bg="#969696"},

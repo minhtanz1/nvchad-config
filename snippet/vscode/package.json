@@ -1,0 +1,19 @@
+{
+	"name": "custom snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": "cpp",
+				"path": "./cpp.json"
+			},
+      {
+        "language": "cpp",
+        "path": "./cppdoc.json"
+      },
+      {
+        "language": "cpp",
+        "path": "../snipmate/cpp.snippets"
+      }
+		]
+	}
+}
