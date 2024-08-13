@@ -314,5 +314,57 @@
         "}"
       ],
       "description": "auto function and trailing return"
-    }
+    },
+   "Basic Lambda": {
+    "prefix": "lambda",
+    "body": [
+      "auto $1 = []($2) {",
+      "\t$3",
+      "};"
+    ],
+    "description": "Creates a basic lambda function."
+  },
+  "Lambda with Captures": {
+    "prefix": "lambda_captures",
+    "body": [
+      "auto $1 = [$2]($3) {",
+      "\t$4",
+      "};"
+    ],
+    "description": "Creates a lambda function with captures."
+  },
+  "Lambda with Return Type": {
+    "prefix": "lambda_return",
+    "body": [
+      "auto $1 = []($2) -> $3 {",
+      "\t$4",
+      "};"
+    ],
+    "description": "Creates a lambda function with a specified return type."
+  },
+  "Lambda as Function Parameter": {
+    "prefix": "lambda_param",
+    "body": [
+      "void $1($2) {",
+      "\t$3",
+      "}",
+      "",
+      "// Usage",
+      "$1([]($4) {",
+      "\t$5",
+      "});"
+    ],
+    "description": "Defines a function that takes a lambda as a parameter."
+  },
+  "Lambda with std::function": {
+    "prefix": "lambda_std_function",
+    "body": [
+      "#include <functional>",
+      "",
+      "std::function<$1($2)> $3 = []($2) {",
+      "\t$4",
+      "};"
+    ],
+    "description": "Creates a lambda assigned to a std::function."
+  } 
 }
