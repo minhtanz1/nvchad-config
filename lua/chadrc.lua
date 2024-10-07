@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-  theme = "tokyonight",
+  theme = "gruvbox_light",
 
   hl_override = {
     Visual = { bg = "#969696" },
