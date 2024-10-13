@@ -9,7 +9,7 @@ M.base46 = {
   theme = "gruvchad",
   hl_override = {
     Visual = { bg = "#969696" },
-    -- Comment = { italic = true, fg = "sun" },
+    Comment = { italic = true, fg = "sun" },
     ["@comment"] = { italic = true, link = "Comment" },
     StatusLine = { bg = "NONE" },
     NvDashAscii = { fg = "none", bg = "none" },
@@ -41,6 +41,7 @@ M.nvdash = {
     "      /:/  /    \\:\\__\\         |::/  /        /:/  /              \\/__/            /:/  /       |::/  /  ",
     "     /:/  /      \\/__/         /:/  /        /:/  /                               /:/  /        /:/  /   ",
     "     \\/__/                     \\/__/         \\/__/                                \\/__/         \\/__/    ",
+    "                                                                                                             ",
   },
 }
 M.lsp = {

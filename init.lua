@@ -10,7 +10,8 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
+vim.opt.wrap = true
+vim.opt.linebreak = true
 local lazy_config = require "configs.lazy"
 
 -- load plugins

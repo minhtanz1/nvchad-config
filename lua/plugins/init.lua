@@ -1,17 +1,31 @@
 return {
   {
-  "lervag/vimtex",
-  ft = { "tex" },
-  lazy = false,     -- we don't want to lazy load VimTeX
-  -- tag = "v2.15", -- uncomment to pin to a specific release
-  init = function()
-    -- VimTeX configuration goes here, e.g.
-    -- vim.g.vimtex_view_method = "okular"
-    vim.g.vimtex_compiler_method = 'latexmk'
-    vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
-    vim.g.vimtex_view_general_viewer = 'zathura'
-  end
+    "lervag/vimtex",
+    ft = { "tex" },
+    lazy = false, -- we don't want to lazy load VimTeX
+    init = function()
+      -- Use latexmk for compilation and set the output directory to "build"
+      vim.g.vimtex_compiler_method = "latexmk"
+      vim.g.vimtex_compiler_latexmk = {
+        build_dir = "build", -- output directory
+        aux_dir = "build", -- auxiliary files directory
+        options = {
+          "-pdf", -- compile to PDF
+          -- "-interaction=nonstopmode", -- nonstop interaction mode
+          "-synctex=0", -- enable synctex for better forward/backward search
+          "-shell-escape", -- allow shell escapes if needed
+          "-output-format=pdf",
+          "-bibtex",
+          "-noemulate-aux-dir",
+        },
+      }
+      -- Set viewer options for Okular
+      vim.g.vimtex_view_general_viewer = "okular"
+      vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+
+    end,
   },
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
