@@ -20,4 +20,5 @@ map("n", "<A-Down>", ":m .+1<CR>==", opts)
 map("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
 map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
 
+map("n", "<leader>v", "<esc><cmd>VimtexView<cr>", {desc = "Vimtex view file pdf"})
 

@@ -12,16 +12,15 @@ return {
         options = {
           "-pdf", -- compile to PDF
           -- "-interaction=nonstopmode", -- nonstop interaction mode
-          "-synctex=0", -- enable synctex for better forward/backward search
+          "-synctex=1", -- enable synctex for better forward/backward search
           "-shell-escape", -- allow shell escapes if needed
-          "-output-format=pdf",
           "-bibtex",
           "-noemulate-aux-dir",
         },
       }
-      -- Set viewer options for Okular
-      vim.g.vimtex_view_general_viewer = "okular"
-      vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+      vim.g.vimtex_view_method = "zathura"
+      -- vim.g.vimtex_view_general_viewer = "zathura"
+      -- vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 
     end,
   },
