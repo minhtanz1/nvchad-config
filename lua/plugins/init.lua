@@ -1,5 +1,13 @@
 return {
   {
+    "let-def/texpresso.vim",
+    ft = { "tex" },
+    config = function ()
+      require("texpresso").texpresso_path = "/home/minhtan/texpresso/build/texpresso"
+    end
+
+  },
+  {
     "lervag/vimtex",
     ft = { "tex" },
     lazy = false, -- we don't want to lazy load VimTeX
