@@ -2,10 +2,9 @@ return {
   {
     "let-def/texpresso.vim",
     ft = { "tex" },
-    config = function ()
-      require("texpresso").texpresso_path = "/home/minhtan/texpresso/build/texpresso"
-    end
-
+    config = function()
+      require("texpresso").texpresso_path = "/home/minhtan/.config/nvim/texpresso/build/texpresso"
+    end,
   },
   {
     "lervag/vimtex",
@@ -27,9 +26,9 @@ return {
           "-noemulate-aux-dir",
         },
       }
-      vim.g.vimtex_view_method = "zathura"
-
-      -- vim.g.vimtex_view_general_viewer = "zathura"
+      -- vim.g.vimtex_view_method = "zathura"
+      -- vim.g.vimtex_view_method = "mupdf"
+      vim.g.vimtex_view_general_viewer = "zathura"
       -- vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
     end,
   },
@@ -58,9 +57,8 @@ return {
         "css-lsp",
         "prettier",
         "clangd",
-        "pyright",
         "mypy",
-        "ruff",
+        "pyright",
         "clang-format",
       },
     },
@@ -77,6 +75,8 @@ return {
         "css",
         "cpp",
         "python",
+        "javascript",
+        "rust",
         "json",
       },
     },
@@ -91,8 +91,13 @@ return {
   {
     -- snippet plugin
     "L3MON4D3/LuaSnip",
-    dependencies = "rafamadriz/friendly-snippets",
+    lazy = true,
+    dependencies = { { "rafamadriz/friendly-snippets", lazy = true } },
     opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+    run = "make install_jsregexp",
+    specs = {
+      { "saghen/blink.cmp", optional = true, opts = { snippets = { preset = "luasnip" } } },
+    },
     config = function(_, opts)
       require("configs.others").luasnip(opts)
     end,

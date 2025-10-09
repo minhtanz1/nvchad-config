@@ -36,6 +36,6 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-local g = vim.g
-local spath = vim.fn.stdpath "config" .. "/snippet"
-g.vscode_snippets_path = spath
+-- local spath = vim.fn.stdpath "config" .. "/snippet"
+vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets/vscode"
+-- vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/snippets/snipmate"

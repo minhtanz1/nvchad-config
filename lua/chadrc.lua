@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "everforest",
+  theme = "gruvchad",
   hl_override = {
     Visual = { bg = "#969696" },
     Comment = { italic = true, fg = "sun" },
@@ -16,7 +16,6 @@ M.base46 = {
     NvDashButtons = { bg = "NONE" },
   },
   transparency = false,
-
 }
 
 M.ui = {
