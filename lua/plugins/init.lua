@@ -32,7 +32,16 @@ return {
       -- vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
     end,
   },
-
+  {
+    "ibhagwan/fzf-lua"
+  },
+  {
+    "kunkka19xx/simple-surr",
+    lazy = false,
+    config = function()
+      require "configs.surround"
+    end,
+  },
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save

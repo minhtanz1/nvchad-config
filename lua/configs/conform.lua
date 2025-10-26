@@ -6,7 +6,7 @@ local options = {
     cpp = { "clang-format" },
     py = { "prettier" },
     rs = { "prettier" },
-    json = { "prettier" },
+    json = { "jsonls" },
   },
 
   format_on_save = {

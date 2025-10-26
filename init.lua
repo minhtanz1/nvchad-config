@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.wrap = true
 vim.opt.linebreak = true
+vim.wo.relativenumber = true
 local lazy_config = require "configs.lazy"
 
 -- load plugins
@@ -29,13 +30,16 @@ require("lazy").setup({
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
-
 require "options"
 require "nvchad.autocmds"
-
+require "configs.helpers"
+require "configs.floating-term"
 vim.schedule(function()
   require "mappings"
 end)
 -- local spath = vim.fn.stdpath "config" .. "/snippet"
 vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets/vscode"
--- vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/snippets/snipmate"
+-- vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/snippet/snipmate"
+
+vim.o.conceallevel = 2         -- Enables full concealment
+vim.g.tex_conceal = "abdmg"

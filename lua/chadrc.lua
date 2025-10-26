@@ -8,7 +8,7 @@ local M = {}
 M.base46 = {
   theme = "gruvchad",
   hl_override = {
-    Visual = { bg = "#969696" },
+    Visual = { bg = "#3e3e3e", blend = 20},
     Comment = { italic = true, fg = "sun" },
     ["@comment"] = { italic = true, link = "Comment" },
     StatusLine = { bg = "NONE" },

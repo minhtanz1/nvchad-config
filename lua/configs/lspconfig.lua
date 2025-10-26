@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "clangd", "pyright" }
+local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "clangd", "pyright", "jsonls", "ltex_plus" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -23,7 +23,61 @@ end
 --   capabilities = nvlsp.capabilities,
 -- }
 --
-
+vim.lsp.config("ltex_plus", {
+  cmd = { "ltex-ls-plus" },
+  filetypes = {
+    "bib",
+    "context",
+    "gitcommit",
+    "html",
+    "markdown",
+    "org",
+    "pandoc",
+    "plaintex",
+    "quarto",
+    "mail",
+    "mdx",
+    "rmd",
+    "rnoweb",
+    "rst",
+    "tex",
+    "text",
+    "typst",
+    "xhtml",
+  },
+  settings = {
+    ltex = {
+      enabled = {
+        "bib",
+        "context",
+        "gitcommit",
+        "html",
+        "markdown",
+        "org",
+        "pandoc",
+        "plaintex",
+        "quarto",
+        "mail",
+        "mdx",
+        "rmd",
+        "rnoweb",
+        "rst",
+        "tex",
+        "latex",
+        "text",
+        "typst",
+        "xhtml",
+      },
+    },
+  },
+})
+vim.lsp.config("jsonls", {
+  init_options = {
+    filetypes = { "json", "jsonc" },
+    cmd = { "vscode-json-language-server", "--stdio" },
+    provideFormatter = true,
+  },
+})
 vim.lsp.config("pyright", {
   init_options = {
     filetypes = { "python" },
