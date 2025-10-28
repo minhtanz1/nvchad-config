@@ -41,5 +41,5 @@ end)
 vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets/vscode"
 -- vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/snippet/snipmate"
 
-vim.o.conceallevel = 2         -- Enables full concealment
+vim.o.conceallevel = 1 -- Enables full concealment
 vim.g.tex_conceal = "abdmg"

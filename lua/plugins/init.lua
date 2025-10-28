@@ -3,7 +3,8 @@ return {
     "let-def/texpresso.vim",
     ft = { "tex" },
     config = function()
-      require("texpresso").texpresso_path = "/home/minhtan/.config/nvim/texpresso/build/texpresso"
+      local home = vim.fn.expand "~"
+      require("texpresso").texpresso_path = home .. "/.config/nvim/texpresso/build/texpresso"
     end,
   },
   {
@@ -22,6 +23,7 @@ return {
           "-synctex=1", -- enable synctex for better forward/backward search
           "-shell-escape", -- allow shell escapes if needed
           "-bibtex",
+          "-pdflatex=lualatex",
           "-output-format=pdf",
           "-noemulate-aux-dir",
         },
@@ -33,7 +35,7 @@ return {
     end,
   },
   {
-    "ibhagwan/fzf-lua"
+    "ibhagwan/fzf-lua",
   },
   {
     "kunkka19xx/simple-surr",

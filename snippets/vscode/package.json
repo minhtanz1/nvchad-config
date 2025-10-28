@@ -5,15 +5,15 @@
       {
         "language": "python",
         "path": "./python.json"
-			},
+      },
       {
         "language": "lua",
         "path": "./lua.json"
       },
       {
-        "language": "latex",
+        "language": "tex",
         "path": "./latex.json"
       }
-		]
+    ]
   }
 }

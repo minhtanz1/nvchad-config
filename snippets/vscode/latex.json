@@ -1,0 +1,346 @@
+{
+  "LaTeX Inline Math": {
+    "prefix": "mi",
+    "body": [
+      "$$1$ $0"
+    ],
+    "description": "Môi trường toán học nội tuyến (inline math) dùng dấu $."
+  },
+  "LaTeX Equation Environment": {
+    "prefix": "me",
+    "body": [
+      "\\begin{equation}",
+      "\t$1",
+      "\\end{equation}$0"
+    ],
+    "description": "Môi trường toán học hiển thị (equation environment)."
+  },
+  "LaTeX Aligned Environment": {
+    "prefix": "maligned",
+    "body": [
+      "\\begin{aligned}",
+      "\t$1 &= $2 \\\\",
+      "\t$3 &= $4",
+      "\\end{aligned}$0"
+    ],
+    "description": "Môi trường căn chỉnh công thức (aligned environment)."
+  },
+  "LaTeX Cases Environment": {
+    "prefix": "mcases",
+    "body": [
+      "\\begin{cases}",
+      "\t$1 & \\text{if } $2 \\\\",
+      "\t$3 & \\text{if } $4",
+      "\\end{cases}$0"
+    ],
+    "description": "Môi trường hàm từng phần (cases environment)."
+  },
+  "Fraction": {
+    "prefix": "mf",
+    "body": [
+      "\\frac{$1}{$2}$0"
+    ],
+    "description": "Phân số (\\frac)."
+  },
+  "Square Root": {
+    "prefix": "msq",
+    "body": "\\sqrt{$1}$0",
+    "description": "Căn bậc hai (\\sqrt)."
+  },
+  "Nth Root": {
+    "prefix": "mnth",
+    "body": "\\sqrt[$1]{$2}$0",
+    "description": "Căn bậc n (\\sqrt[n])."
+  },
+  "Summation (Sigma)": {
+    "prefix": "msum",
+    "body": "\\sum_{$1}^{$2} $3$0",
+    "description": "Tổng (\\sum)."
+  },
+  "Integral": {
+    "prefix": "mint",
+    "body": "\\int_{$1}^{$2} $3 d$4$0",
+    "description": "Tích phân (\\int)."
+  },
+  "Limit": {
+    "prefix": "mlim",
+    "body": "\\lim_{$1 \\to $2} $3$0",
+    "description": "Giới hạn (\\lim)."
+  },
+  "Partial Derivative": {
+    "prefix": "mpartial",
+    "body": "\\frac{\\partial $1}{\\partial $2}$0",
+    "description": "Đạo hàm riêng (\\partial)."
+  },
+  "Vector (Overhead Arrow)": {
+    "prefix": "mvec",
+    "body": "\\vec{$1}$0",
+    "description": "Ký hiệu vector (\\vec)."
+  },
+  "Hat (Unit Vector)": {
+    "prefix": "mhat",
+    "body": "\\hat{$1}$0",
+    "description": "Mũ (\\hat), thường dùng cho vector đơn vị."
+  },
+  "Alpha": {
+    "prefix": "al",
+    "body": "\\alpha$0",
+    "description": "Ký hiệu Hy Lạp: Alpha."
+  },
+  "Beta": {
+    "prefix": "be",
+    "body": "\\beta$0",
+    "description": "Ký hiệu Hy Lạp: Beta."
+  },
+  "Gamma": {
+    "prefix": "ga",
+    "body": "\\gamma$0",
+    "description": "Ký hiệu Hy Lạp: Gamma."
+  },
+  "Delta (Lowercase)": {
+    "prefix": "de",
+    "body": "\\delta$0",
+    "description": "Ký hiệu Hy Lạp: Delta (thường)."
+  },
+  "Delta (Uppercase)": {
+    "prefix": "DE",
+    "body": "\\Delta$0",
+    "description": "Ký hiệu Hy Lạp: Delta (hoa)."
+  },
+  "Theta": {
+    "prefix": "th",
+    "body": "\\theta$0",
+    "description": "Ký hiệu Hy Lạp: Theta."
+  },
+  "Pi (Lowercase)": {
+    "prefix": "pi",
+    "body": "\\pi$0",
+    "description": "Ký hiệu Hy Lạp: Pi (thường)."
+  },
+  "Omega (Uppercase)": {
+    "prefix": "OM",
+    "body": "\\Omega$0",
+    "description": "Ký hiệu Hy Lạp: Omega (hoa)."
+  },
+  "Superscript (Power)": {
+    "prefix": "pow",
+    "body": "^{$1}$0",
+    "description": "Mũ (Superscript)."
+  },
+  "Subscript (Index)": {
+    "prefix": "sub",
+    "body": "_{$1}$0",
+    "description": "Chỉ số dưới (Subscript)."
+  },
+  "Text in Math Mode": {
+    "prefix": "mt",
+    "body": "\\text{$1}$0",
+    "description": "Chữ thường trong môi trường toán học (\\text)."
+  },
+  "Infinity": {
+    "prefix": "inf",
+    "body": "\\infty$0",
+    "description": "Vô cùng (\\infty)."
+  },
+  "Set Membership": {
+    "prefix": "min",
+    "body": "\\in$0",
+    "description": "Thuộc tập hợp (\\in)."
+  },
+  "Not Equal To": {
+    "prefix": "mne",
+    "body": "\\neq$0",
+    "description": "Không bằng (\\neq)."
+  },
+  "Therefore": {
+    "prefix": "mtherefore",
+    "body": "\\therefore$0",
+    "description": "Vì vậy (\\therefore)."
+  },
+  "For All": {
+    "prefix": "mforall",
+    "body": "\\forall$0",
+    "description": "Với mọi (\\forall)."
+  },
+  "Exists": {
+    "prefix": "mexists",
+    "body": "\\exists$0",
+    "description": "Tồn tại (\\exists)."
+  },
+  "LaTeX Aligned Environment (Alignment)": {
+    "prefix": "maligned",
+    "body": [
+      "\\begin{aligned}",
+      "\t$1 &= $2 \\\\",
+      "\t$3 &= $4",
+      "\\end{aligned}$0"
+    ],
+    "description": "Môi trường căn chỉnh công thức (aligned environment)."
+  },
+  "LaTeX Cases Environment (Piecewise)": {
+    "prefix": "mcases",
+    "body": [
+      "\\begin{cases}",
+      "\t$1 & \\text{if } $2 \\\\",
+      "\t$3 & \\text{if } $4",
+      "\\end{cases}$0"
+    ],
+    "description": "Môi trường hàm từng phần (cases environment)."
+  },
+  "Matrix - Parentheses (pmatrix)": {
+    "prefix": "mmat",
+    "body": [
+      "\\begin{pmatrix}",
+      "\t$1 & $2 \\\\",
+      "\t$3 & $4",
+      "\\end{pmatrix}$0"
+    ],
+    "description": "Ma trận với dấu ngoặc đơn (pmatrix)."
+  },
+  "Matrix - Brackets (bmatrix)": {
+    "prefix": "mbmat",
+    "body": [
+      "\\begin{bmatrix}",
+      "\t$1 & $2 \\\\",
+      "\t$3 & $4",
+      "\\end{bmatrix}$0"
+    ],
+    "description": "Ma trận với dấu ngoặc vuông (bmatrix)."
+  },
+  "Matrix - Determinant (vmatrix)": {
+    "prefix": "mdet",
+    "body": [
+      "\\begin{vmatrix}",
+      "\t$1 & $2 \\\\",
+      "\t$3 & $4",
+      "\\end{vmatrix}$0"
+    ],
+    "description": "Định thức (vmatrix)."
+  },
+  "Identity Matrix (Bold I)": {
+    "prefix": "mid",
+    "body": "\\mathbf{I}",
+    "description": "Ma trận đơn vị (Identity Matrix - I)."
+  },
+  "Zero Matrix (Bold 0)": {
+    "prefix": "mzero",
+    "body": "\\mathbf{0}",
+    "description": "Ma trận không (Zero Matrix - 0)."
+  },
+  "Transpose": {
+    "prefix": "mtrans",
+    "body": "^{T}$0",
+    "description": "Chuyển vị (Transpose)."
+  },
+  "Inverse": {
+    "prefix": "minv",
+    "body": "^{-1}$0",
+    "description": "Nghịch đảo (Inverse)."
+  },
+  "Vector (Bold)": {
+    "prefix": "mvecb",
+    "body": "\\mathbf{$1}$0",
+    "description": "Ký hiệu vector in đậm."
+  },
+  "Nabla Operator (Del)": {
+    "prefix": "mnab",
+    "body": "\\nabla$0",
+    "description": "Toán tử Nabla (Del)."
+  },
+  "Dot Product": {
+    "prefix": "mdot",
+    "body": "\\cdot$0",
+    "description": "Tích vô hướng (Dot Product)."
+  },
+  "Cross Product": {
+    "prefix": "mcross",
+    "body": "\\times$0",
+    "description": "Tích có hướng (Cross Product)."
+  },
+  "Time Derivative (Single Dot)": {
+    "prefix": "mdott",
+    "body": "\\dot{$1}$0",
+    "description": "Đạo hàm theo thời gian (một chấm)."
+  },
+  "Second Time Derivative (Double Dot)": {
+    "prefix": "mdott2",
+    "body": "\\ddot{$1}$0",
+    "description": "Đạo hàm cấp hai theo thời gian (hai chấm)."
+  },
+  "Unit - General (mathrm)": {
+    "prefix": "munit",
+    "body": "\\mathrm{$1}$0",
+    "description": "Ký hiệu đơn vị (dùng \\mathrm)."
+  },
+  "Planck Constant (Reduced h-bar)": {
+    "prefix": "mhbar",
+    "body": "\\hbar$0",
+    "description": "Hằng số Planck rút gọn (hbar)."
+  },
+  "Speed of Light": {
+    "prefix": "mc",
+    "body": "c$0",
+    "description": "Vận tốc ánh sáng."
+  },
+  "Gravitational Constant (G)": {
+    "prefix": "mG",
+    "body": "G$0",
+    "description": "Hằng số hấp dẫn."
+  },
+  "Boltzmann Constant": {
+    "prefix": "mkb",
+    "body": "k_{\\mathrm{B}}$0",
+    "description": "Hằng số Boltzmann."
+  },
+  "Quantum Bra (Angle bracket)": {
+    "prefix": "mbra",
+    "body": "\\langle $1 |$0",
+    "description": "Ký hiệu Bra trong cơ học lượng tử."
+  },
+  "Quantum Ket (Angle bracket)": {
+    "prefix": "mket",
+    "body": "| $1 \\rangle$0",
+    "description": "Ký hiệu Ket trong cơ học lượng tử."
+  },
+  "Quantum Braket": {
+    "prefix": "mbraket",
+    "body": "\\langle $1 | $2 \\rangle$0",
+    "description": "Tích vô hướng Bra-Ket."
+  },
+  "Epsilon": {
+    "prefix": "ep",
+    "body": "\\epsilon$0",
+    "description": "Epsilon."
+  },
+  "Lambda": {
+    "prefix": "la",
+    "body": "\\lambda$0",
+    "description": "Lambda."
+  },
+  "Mu": {
+    "prefix": "mu",
+    "body": "\\mu$0",
+    "description": "Mu."
+  },
+  "Phi": {
+    "prefix": "phi",
+    "body": "\\phi$0",
+    "description": "Phi (thường)."
+  },
+  "Omega (Lowercase)": {
+    "prefix": "om",
+    "body": "\\omega$0",
+    "description": "Omega (thường)."
+  },
+  "left bracket": {
+    "prefix": "lb",
+    "body": [
+      "\\left \\{ ",
+      "\\begin{matrix}",
+      "${1:content}",
+      "\\end{matrix}",
+      "\\right."
+    ],
+    "description": "left bracket"
+  }
+}
