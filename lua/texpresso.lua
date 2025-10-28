@@ -2,7 +2,9 @@ local M = {}
 
 -- Configuration
 
-M.texpresso_path = "/home/minhtan/.config/nvim/texpresso/build/texpresso"
+local home = vim.fn.expand("~")
+M.texpresso_path = home .. "/.config/nvim/texpresso/build/texpresso"
+
 
 -- Logging routines
 
