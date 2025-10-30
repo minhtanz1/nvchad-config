@@ -6,6 +6,12 @@
     ],
     "description": "Môi trường toán học nội tuyến (inline math) dùng dấu $."
   },
+  "Display math": {
+    "prfix": "dm",
+    "body": [
+      "$$$1 $$"
+    ]
+  },
   "LaTeX Equation Environment": {
     "prefix": "me",
     "body": [

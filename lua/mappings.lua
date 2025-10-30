@@ -43,3 +43,9 @@ map("n", "<leader>sm", function()
   local symbols = symbols_map[filetype] or "function"
   require("fzf-lua").lsp_document_symbols { symbols = symbols }
 end, {})
+
+-- Normal mode: copy current line to system clipboard
+vim.keymap.set('n', '<y>', '"+yy', { noremap = true, silent = true })
+
+-- Visual mode: copy selection to system clipboard
+vim.keymap.set('v', '<y>', '"+y', { noremap = true, silent = true })

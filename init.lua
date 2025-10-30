@@ -43,3 +43,4 @@ vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets/vscode"
 
 vim.o.conceallevel = 1 -- Enables full concealment
 vim.g.tex_conceal = "abdmg"
+vim.opt.clipboard = 'unnamedplus'

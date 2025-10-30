@@ -28,7 +28,7 @@ return {
           "-noemulate-aux-dir",
         },
       }
-      -- vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_view_method = "zathura"
       -- vim.g.vimtex_view_method = "mupdf"
       vim.g.vimtex_view_general_viewer = "zathura"
       -- vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"

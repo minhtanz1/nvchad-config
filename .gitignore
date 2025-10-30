@@ -1,0 +1,39 @@
+# Neovim swap and backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Undo history
+*.un~
+
+# Session files
+Session.vim
+
+# Plugin manager directories (e.g., packer, lazy.nvim)
+plugged/
+site/
+pack/
+
+# Node modules (if using JS/TS plugins)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Lua language server cache
+.luacheckrc
+.sumneko_lua/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Personal config backups
+*.old
+*.orig
+
