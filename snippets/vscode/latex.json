@@ -7,10 +7,11 @@
     "description": "Môi trường toán học nội tuyến (inline math) dùng dấu $."
   },
   "Display math": {
-    "prfix": "dm",
+    "prefix": "dm",
     "body": [
-      "$$$1 $$"
-    ]
+      "$$ $1 $$"
+    ],
+    "description": "Hiển thị môi trường toán học trong latex"
   },
   "LaTeX Equation Environment": {
     "prefix": "me",
@@ -338,15 +339,13 @@
     "body": "\\omega$0",
     "description": "Omega (thường)."
   },
-  "left bracket": {
-    "prefix": "lb",
+  "left curly bracket": {
+    "prefix": "lcb",
     "body": [
-      "\\left \\{ ",
-      "\\begin{matrix}",
-      "${1:content}",
-      "\\end{matrix}",
-      "\\right."
+      "\\begin{cases}",
+      "${1:content} \\ \\ ",
+      "\\end{cases}"
     ],
-    "description": "left bracket"
+    "description": "left curly bracket"
   }
 }

@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "clangd", "pyright", "jsonls", "ltex_plus" }
+local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "pyright", "jsonls", "texlab" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -23,50 +23,24 @@ end
 --   capabilities = nvlsp.capabilities,
 -- }
 --
-vim.lsp.config("ltex_plus", {
-  cmd = { "ltex-ls-plus" },
-  filetypes = {
-    "bib",
-    "context",
-    "gitcommit",
-    "html",
-    "markdown",
-    "org",
-    "pandoc",
-    "plaintex",
-    "quarto",
-    "mail",
-    "mdx",
-    "rmd",
-    "rnoweb",
-    "rst",
-    "tex",
-    "text",
-    "typst",
-    "xhtml",
-  },
+vim.lsp.config("texlab", {
+  cmd = { "texlab" },
+  filetypes = { "tex", "plaintex", "bib" },
   settings = {
-    ltex = {
-      enabled = {
-        "bib",
-        "context",
-        "gitcommit",
-        "html",
-        "markdown",
-        "org",
-        "pandoc",
-        "plaintex",
-        "quarto",
-        "mail",
-        "mdx",
-        "rmd",
-        "rnoweb",
-        "rst",
-        "tex",
-        "latex",
-        "text",
-        "typst",
-        "xhtml",
+    texlab = {
+      bibtexFormatter = "texlab",
+      chktex = {
+        onEdit = false,
+        onOpenAndSave = false,
+      },
+      diagnosticsDelay = 300,
+      formatterLineLength = 80,
+      forwardSearch = {
+        args = {},
+      },
+      latexFormatter = "latexindent",
+      latexindent = {
+        modifyLineBreaks = false,
       },
     },
   },
