@@ -5,19 +5,24 @@ M.luasnip = function(opts)
   -- vscode format
   require("luasnip.loaders.from_vscode").lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
   require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode/" }
-  
+
   -- snipmate format
   -- require("luasnip.loaders.from_snipmate").load()
   -- require("luasnip.loaders.from_snipmate").load { paths = vim.fn.stdpath "config" .. "/snippet/snipmate" }
   --
   -- -- lua format
-  -- require("luasnip.loaders.from_lua").load()
-  -- require("luasnip.loaders.from_lua").load { paths = vim.g.lua_snippets_path or "" }
+  require("luasnip.loaders.from_lua").load()
+  require("luasnip.loaders.from_lua").load { paths = vim.fn.stdpath "config" .. "/snippets/lua/" or "" }
   vim.keymap.set({ "i", "s" }, "<C-J>", function()
     require("luasnip").jump(0)
   end, { silent = true })
   vim.keymap.set({ "i", "s" }, "<C-K>", function()
     require("luasnip").jump(-2)
+  end, { silent = true })
+  vim.keymap.set({ "i", "s" }, "<C-L>", function()
+    if require("luasnip").choice_active() then
+      require("luasnip").change_choice(1)
+    end
   end, { silent = true })
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()

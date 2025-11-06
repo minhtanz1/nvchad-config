@@ -65,9 +65,30 @@
     "description": "Tổng (\\sum)."
   },
   "Integral": {
-    "prefix": "mint",
+    "prefix": "int",
     "body": "\\int_{$1}^{$2} $3 d$4$0",
     "description": "Tích phân (\\int)."
+  },
+  "Double Integral": {
+    "prefix": "dint",
+    "body": [
+      "\\iint\\limits_{${1:Region}} ${2:f(x,y)}\\, d${3:x}\\, d${4:y}"
+    ],
+    "description": "Insert a double integral"
+  },
+  "Double Integral Short Form": {
+    "prefix": "iintshort",
+    "body": [
+      "\\iint\\limits_{x=${1:a},\\,y=${2:c}}^{x=${3:b},\\,y=${4:d}} \\left( ${5:f(x,y)} \\, d${6:y} \\right) \\, d${7:x}"
+    ],
+    "description": "Insert a concise double integral with limits"
+  },
+  "Triple Integral": {
+    "prefix": "tint",
+    "body": [
+      "\\int\\int\\int_{${1:Volume}} ${2:f(x,y,z)}\\, d${3:x}\\, d${4:y}\\, d${5:z}"
+    ],
+    "description": "Insert a triple integral"
   },
   "Limit": {
     "prefix": "mlim",
@@ -347,5 +368,12 @@
       "\\end{cases}"
     ],
     "description": "left curly bracket"
+  },
+  "Boxed": {
+    "prefix": "box",
+    "body": [
+      "\\boxed{${1:content}}"
+    ],
+    "description": "Boxed"
   }
 }
