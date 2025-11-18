@@ -44,8 +44,11 @@ map("n", "<leader>sm", function()
   require("fzf-lua").lsp_document_symbols { symbols = symbols }
 end, {})
 
--- Normal mode: copy current line to system clipboard
-vim.keymap.set('n', '<y>', '"+yy', { noremap = true, silent = true })
+-- Normal mode: copy current line to system clipboard vim.keymap.set('n', '<y>', '"+yy', { noremap = true, silent = true })
 
 -- Visual mode: copy selection to system clipboard
-vim.keymap.set('v', '<y>', '"+y', { noremap = true, silent = true })
+map("v", "<y>", '"+y', { noremap = true, silent = true })
+map("i", "<C-n>", "<Plug>luasnip-next-choice", { silent = true })
+map("s", "<C-n>", "<Plug>luasnip-next-choice", { silent = true })
+map("i", "<C-p>", "<Plug>luasnip-prev-choice", { silent = true })
+map("s", "<C-p>", "<Plug>luasnip-prev-choice", { silent = true })

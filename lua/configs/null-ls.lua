@@ -12,10 +12,10 @@ local sources = {
   b.formatting.stylua,
   b.formatting.black,
   -- cpp
-  -- b.formatting.clang_format 
+  -- b.formatting.clang_format
   b.formatting.prettier,
   b.diagnostics.mypy,
-  b.diagnostics.ruff,
+  -- b.diagnostics.ruff,
 }
 
 null_ls.setup {
