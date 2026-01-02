@@ -52,3 +52,6 @@ map("i", "<C-n>", "<Plug>luasnip-next-choice", { silent = true })
 map("s", "<C-n>", "<Plug>luasnip-next-choice", { silent = true })
 map("i", "<C-p>", "<Plug>luasnip-prev-choice", { silent = true })
 map("s", "<C-p>", "<Plug>luasnip-prev-choice", { silent = true })
+
+map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
+map("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })

@@ -34,6 +34,7 @@ require "options"
 require "nvchad.autocmds"
 require "configs.helpers"
 require "configs.floating-term"
+
 vim.schedule(function()
   require "mappings"
 end)
