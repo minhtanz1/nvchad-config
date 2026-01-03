@@ -1,12 +1,12 @@
 return {
-  {
-    "let-def/texpresso.vim",
-    ft = { "tex" },
-    config = function()
-      local home = vim.fn.expand "~"
-      require("texpresso").texpresso_path = home .. "/.config/nvim/texpresso/build/texpresso"
-    end,
-  },
+  -- {
+  --   "let-def/texpresso.vim",
+  --   ft = { "tex" },
+  --   config = function()
+  --     local home = vim.fn.expand "~"
+  --     require("texpresso").texpresso_path = home .. "/.config/nvim/texpresso/build/texpresso"
+  --   end,
+  -- },
   {
     "lervag/vimtex",
     ft = { "tex" },
@@ -54,7 +54,7 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       local dap = require "dap"
       local dapui = require "dapui"
@@ -84,7 +84,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     -- config = function()
-    --   require "configs.dap.javascript"
+    --   require "configs.dap"
     -- end,
   },
   {
@@ -132,6 +132,27 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       require "../configs/null-ls.lua"
+    end,
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async", -- Dependency bắt buộc
+    },
+    event = "BufReadPost", -- Load plugin khi mở file
+    config = function()
+      -- 1. Cấu hình các options cần thiết (Video nhắc rất kỹ đoạn này)
+      vim.o.foldcolumn = "1" -- Hiện cột fold bên trái (để thấy dấu +,-)
+      vim.o.foldlevel = 99 -- Mở tất cả code khi mới vào file
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- 2. Setup nvim-ufo
+      require("ufo").setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          return { "lsp", "indent" } -- Dùng LSP làm nguồn ưu tiên để fold code chuẩn hơn
+        end,
+      }
     end,
   },
 

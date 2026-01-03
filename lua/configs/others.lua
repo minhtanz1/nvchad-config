@@ -3,7 +3,7 @@ M.luasnip = function(opts)
   require("luasnip").config.set_config(opts)
 
   -- vscode format
-  require("luasnip.loaders.from_vscode").load { exclude = vim.g.vscode_snippets_exclude or {} }
+  -- require("luasnip.loaders.from_vscode").load { exclude = vim.g.vscode_snippets_exclude or {} }
   require("luasnip.loaders.from_vscode").load { paths = vim.fn.stdpath "config" .. "/snippets/vscode/" }
 
   -- snipmate format

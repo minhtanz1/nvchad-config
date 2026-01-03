@@ -55,3 +55,16 @@ map("s", "<C-p>", "<Plug>luasnip-prev-choice", { silent = true })
 
 map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
 map("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })
+
+map("n", "zR", require("ufo").openAllFolds)
+map("n", "zM", require("ufo").closeAllFolds)
+map("n", "zr", require("ufo").openFoldsExceptKinds)
+map("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+map("n", "K", function()
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    -- choose one of coc.nvim and nvim lsp
+    vim.fn.CocActionAsync "definitionHover" -- coc.nvim
+    vim.lsp.buf.hover()
+  end
+end)
