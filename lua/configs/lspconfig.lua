@@ -1,5 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
-local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "pyright", "jsonls", "texlab" }
+local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "ts_ls", "pyright", "jsonls", "texlab"}
 vim.lsp.enable(servers)
 
 vim.lsp.config("texlab", {
@@ -68,6 +68,4 @@ vim.lsp.config("rust_analyzer", {
     },
   },
 })
-
-
 

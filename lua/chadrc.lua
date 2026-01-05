@@ -16,6 +16,7 @@ M.base46 = {
     NvDashButtons = { bg = "NONE" },
   },
   transparency = false,
+  -- integrations = { "render-markdown" },
 }
 
 M.ui = {

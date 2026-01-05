@@ -8,6 +8,16 @@ return {
   --   end,
   -- },
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicon
+    ft = { "markdown", "org", "md" },
+    config = function ()
+      require("configs.render-markdown")
+    end
+  },
+  {
     "lervag/vimtex",
     ft = { "tex" },
     lazy = false, -- we don't want to lazy load VimTeX
