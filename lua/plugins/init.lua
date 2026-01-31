@@ -1,4 +1,19 @@
 return {
+  {
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    ft = { "org" },
+    config = function()
+      -- Setup orgmode
+      require("orgmode").setup {
+        org_agenda_files = "~/org/**/*",
+        org_default_notes_file = "~/orgfiles/refile.org",
+      }
+
+      -- Experimental LSP support
+      vim.lsp.enable "org"
+    end,
+  },
   -- {
   --   "let-def/texpresso.vim",
   --   ft = { "tex" },
@@ -9,13 +24,11 @@ return {
   -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicon
-    ft = { "markdown", "org", "md" },
-    config = function ()
-      require("configs.render-markdown")
-    end
+    ft = { "markdown", "org" ,"md" },
+    config = function()
+      require "configs.render-markdown"
+    end,
   },
   {
     "lervag/vimtex",
