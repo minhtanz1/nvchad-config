@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "gruvchad",
+  theme = "yoru",
   hl_override = {
     Visual = { bg = "#3e3e3e", blend = 20},
     Comment = { italic = true, fg = "sun" },
