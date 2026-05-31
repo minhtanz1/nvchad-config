@@ -36,4 +36,4 @@ Thumbs.db
 # Personal config backups
 *.old
 *.orig
-
+lazy-lock.json

@@ -9,7 +9,7 @@ M.base46 = {
   theme = "yoru",
   hl_override = {
     Visual = { bg = "#3e3e3e", blend = 20},
-    Comment = { italic = true, fg = "sun" },
+    Comment = { italic = true, fg = "grey_fg"},
     ["@comment"] = { italic = true, link = "Comment" },
     StatusLine = { bg = "NONE" },
     NvDashAscii = { fg = "none", bg = "none" },

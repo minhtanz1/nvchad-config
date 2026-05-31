@@ -7,15 +7,84 @@ return {
   --     require("texpresso").texpresso_path = home .. "/.config/nvim/texpresso/build/texpresso"
   --   end,
   -- },
+
   {
     "MeanderingProgrammer/render-markdown.nvim",
     -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicon
     ft = { "markdown", "org", "md" },
-    config = function ()
-      require("configs.render-markdown")
-    end
+    config = function()
+      require "configs.render-markdown"
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp", -- LSP completions
+      "hrsh7th/cmp-buffer", -- buffer words
+      "hrsh7th/cmp-path", -- filesystem paths
+      "hrsh7th/cmp-nvim-lua", -- Neovim Lua API
+      "saadparwaiz1/cmp_luasnip", -- snippets
+      "L3MON4D3/LuaSnip", -- snippet engine
+      "onsails/lspkind.nvim",
+      "lukas-reineke/cmp-under-comparator",
+    },
+    config = function()
+      require "configs.cmp"
+    end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    config = function()
+      require "configs.lsp_signature"
+    end,
+  },
+
+  {
+    "R-nvim/R.nvim",
+    lazy = false,
+    config = function()
+      -- Create a table with the options to be passed to setup()
+      ---@type RConfigUserOpts
+      local opts = {
+        hook = {
+          on_filetype = function()
+            vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
+            vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+          end,
+        },
+        auto_start = "always",
+        objbr_auto_start = true,
+        R_args = { "--quiet", "--no-save" },
+        R_path = "/usr/bin/R",
+        min_editor_width = 72,
+        rconsole_width = 78,
+        objbr_mappings = { -- Object browser keymap
+          c = "class", -- Call R functions
+          ["<localleader>gg"] = "head({object}, n = 15)", -- Use {object} notation to write arbitrary R code.
+          v = function()
+            -- Run lua functions
+            require("r.browser").toggle_view()
+          end,
+        },
+        -- disable_cmds = {
+        --   "RClearConsole",
+        --   "RCustomStart",
+        --   "RSPlot",
+        --   "RSaveClose",
+        -- },
+      }
+      -- Check if the environment variable "R_AUTO_START" exists.
+      -- If using fish shell, you could put in your config.fish:
+      -- alias r "R_AUTO_START=true nvim"
+      -- if vim.env.R_AUTO_START == "true" then
+      --   opts.auto_start = "on startup"
+      --   opts.objbr_auto_start = true
+      -- end
+      require("r").setup(opts)
+    end,
   },
   {
     "lervag/vimtex",
@@ -33,7 +102,7 @@ return {
           "-synctex=1", -- enable synctex for better forward/backward search
           "-shell-escape", -- allow shell escapes if needed
           "-bibtex",
-          "-pdflatex=lualatex",
+          -- "-pdflatex=pdflatex",
           "-output-format=pdf",
           "-noemulate-aux-dir",
         },
@@ -109,6 +178,7 @@ return {
     opts = {
       ensure_installed = {
         "lua-language-server",
+        "marksman",
         "stylua",
         "html-lsp",
         "css-lsp",
@@ -120,9 +190,21 @@ return {
       },
     },
   },
-
+  {
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    config = function()
+      require("orgmode").setup {
+        org_agenda_files = "~/orgfiles/**/*",
+        org_default_notes_file = "~/orgfiles/refile.org",
+      }
+      -- Experimental LSP support
+      vim.lsp.enable "org"
+    end,
+  },
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     opts = {
       ensure_installed = {
         "vim",
@@ -135,6 +217,13 @@ return {
         "javascript",
         "rust",
         "json",
+        "markdown",
+        "markdown_inline",
+        "r",
+        "rnoweb",
+        "yaml",
+        "latex",
+        "csv",
       },
     },
   },

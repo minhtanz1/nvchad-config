@@ -1,14 +1,28 @@
 vim.keymap.set("n", "<leader>ce", function()
-	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
-	if #diagnostics > 0 then
-		local message = diagnostics[1].message
-		vim.fn.setreg("+", message)
-		print("Copied diagnostic: " .. message)
-	else
-		print("No diagnostic at cursor")
-	end
-end, { noremap = true, silent = true })
+  -- Get the current cursor position (line is 0-indexed, col is 0-indexed)
+  local line = vim.fn.line "." - 1
+  local col = vim.fn.col "." - 1
 
--- go to errors in a file :/
-vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next) -- next err
-vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev) -- previous err
+  -- Get all diagnostics on the current line
+  local diagnostics = vim.diagnostic.get(0, { lnum = line })
+  if #diagnostics == 0 then
+    print "No diagnostic at cursor"
+    return
+  end
+
+  -- Target the exact diagnostic under the cursor column
+  local target_diagnostic = diagnostics[1]
+  for _, d in ipairs(diagnostics) do
+    if col >= d.col and col <= d.end_col then
+      target_diagnostic = d
+      break
+    end
+  end
+
+  -- Copy to system clipboard (+)
+  local message = target_diagnostic.message
+  vim.fn.setreg("+", message)
+
+  -- Use a clean echo instead of a messy print wrapper
+  vim.api.nvim_echo({ { "Copied diagnostic: ", "Title" }, { message, "Normal" } }, false, {})
+end, { desc = "LSP: Copy diagnostic under cursor" })
