@@ -48,3 +48,4 @@ vim.g.tex_conceal = "bdmgs"
 vim.opt.clipboard = "unnamedplus"
 vim.g.vimtex_quickfix_ignore_filters = { "warning", "Underfull", "Overfull" }
 vim.g.vimtex_quickfix_open_on_warning = false
+vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25-blinkwait300-blinkon200-blinkoff150,r-cr:hor20"

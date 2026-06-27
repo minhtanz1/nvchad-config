@@ -22,32 +22,13 @@ return {
     "sphamba/smear-cursor.nvim",
     lazy = false,
     opts = {
-      smear_between_buffers = true,
-      smear_between_neighbor_lines = true,
-      scroll_buffer_space = true,
-      legacy_computing_symbols_support = false,
-      time_interval = 10,
-      transparent_bg_fallback_color = "#303030",
-
-      -- cursor_color = "#ff4000",
-      particles_enabled = true,
-      stiffness = 0.5,
-      trailing_stiffness = 0.2,
-      trailing_exponent = 5,
-      damping = 0.6,
-      gradient_exponent = 0,
-      gamma = 1,
-      never_draw_over_target = true, -- if you want to actually see under the cursor
-      hide_target_hack = true, -- same
-      particle_spread = 1,
-      particles_per_second = 500,
-      particles_per_length = 50,
-      particle_max_lifetime = 800,
-      particle_max_initial_velocity = 20,
-      particle_velocity_from_cursor = 0.5,
-      particle_damping = 0.15,
-      particle_gravity = -50,
-      min_distance_emit_particles = 0,
+      stiffness = 0.8, -- 0.6      [0, 1]
+      trailing_stiffness = 0.6, -- 0.45     [0, 1]
+      stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+      trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+      damping = 0.95, -- 0.85     [0, 1]
+      damping_insert_mode = 0.95, -- 0.9      [0, 1]
+      distance_stop_animating = 0.5, -- 0.1      > 0
     },
   },
   {
@@ -233,6 +214,22 @@ return {
       -- Experimental LSP support
       vim.lsp.enable "org"
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      enable = true, -- Enable this plugin by default
+      max_lines = 7, -- How many lines the window should span (0 = no limit)
+      min_window_height = 15, -- Minimum editor window height to enable context
+      line_numbers = true,
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = "outer", -- Discard 'inner' or 'outer' lines if max_lines exceeded
+      mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+      separator = nil, -- Separator string between context and content (e.g., "-")
+      zindex = 20, -- The Z-index of the context window
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",

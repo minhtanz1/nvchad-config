@@ -1,13 +1,14 @@
 require "nvchad.mappings"
 
 -- add yours here
-
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 map("i", "<C-s>", "<esc><cmd>w<cr>i")
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+map("n", "j", "jzz", { noremap = true, silent = true })
+map("n", "k", "kzz", { noremap = true, silent = true })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- Move line up
@@ -80,6 +81,12 @@ map("n", "<leader>sm", function()
     java = "class",
     lua = "function",
     go = { "method", "struct", "interface" },
+    rust = { "function", "method", "struct", "enum", "trait" }, -- rust-analyzer
+    svelte = { "function", "variable" }, -- svelte-language-server (phần <script>)
+    r = { "function", "variable" }, -- r-languageserver, R ít dùng class
+    html = "field", -- vscode-html-ls map kind theo tag, không chuẩn lắm
+    css = { "class", "variable" }, -- vscode-css-ls: .class -> class, #id -> variable
+    latex = { "string", "method", "constant" }, -- texlab: section=string, figure/table=method, label=constant
   }
   local symbols = symbols_map[filetype] or "function"
   require("fzf-lua").lsp_document_symbols { symbols = symbols }
