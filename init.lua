@@ -42,7 +42,6 @@ end)
 -- local spath = vim.fn.stdpath "config" .. "/snippet"
 vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets/vscode"
 vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/snippets/lua"
-
 vim.o.conceallevel = 2 -- Enables full concealment
 vim.g.tex_conceal = "bdmgs"
 vim.opt.clipboard = "unnamedplus"

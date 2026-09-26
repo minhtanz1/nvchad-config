@@ -12,10 +12,11 @@ local servers = {
   "marksman",
   "svelte",
   "djls",
+  "tinymist",
 }
 local capabilities = cmp_nvim_lsp.default_capabilities()
 local function lsp_cmd(primary, fallback)
-  local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+  local mason_bin = vim.fn.stdpath "data" .. "/mason/bin"
   local primary_path = mason_bin .. "/" .. primary
   if vim.loop.fs_access(primary_path, "X") then
     return { primary_path, "--stdio" }
@@ -30,6 +31,13 @@ local function lsp_cmd(primary, fallback)
 end
 
 vim.lsp.enable(servers)
+vim.lsp.config("r_language_server", {
+  filetypes = { "r", "rmd" },
+})
+vim.lsp.config("tinymist", {
+  cmd = lsp_cmd "tinymist",
+  filetypes = { "typst" },
+})
 vim.lsp.config("html", {
   cmd = lsp_cmd("html-lsp", "vscode-html-language-server"),
   filetypes = { "html" },

@@ -19,16 +19,42 @@ return {
     end,
   },
   {
+    "chomosuke/typst-preview.nvim",
+    lazy = false,
+    ft = "typst",
+    version = "1.*",
+    opts = {
+      debug = true,
+      follow_cursor = true,
+      partial_rendering = true,
+      dependencies_bin = { tinymist = "tinymist" },
+      get_root = function(path_of_main_file)
+        local main_dir = vim.fs.dirname(vim.fn.fnamemodify(path_of_main_file, ":p"))
+        local found = vim.fs.find({ "typst.toml", ".git" }, { path = main_dir, upward = true })
+        if #found > 0 then
+          return vim.fs.dirname(found[1])
+        end
+
+        local root = os.getenv "TYPST_ROOT"
+        if root and vim.startswith(path_of_main_file, root) then
+          return root
+        end
+
+        return main_dir
+      end,
+    },
+  },
+  {
     "sphamba/smear-cursor.nvim",
     lazy = false,
     opts = {
-      stiffness = 0.8, -- 0.6      [0, 1]
-      trailing_stiffness = 0.6, -- 0.45     [0, 1]
-      stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
-      trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
-      damping = 0.95, -- 0.85     [0, 1]
-      damping_insert_mode = 0.95, -- 0.9      [0, 1]
-      distance_stop_animating = 0.5, -- 0.1      > 0
+      -- stiffness = 0.8, -- 0.6      [0, 1]
+      -- trailing_stiffness = 0.6, -- 0.45     [0, 1]
+      -- stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+      -- trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+      -- damping = 0.95, -- 0.85     [0, 1]
+      -- damping_insert_mode = 0.95, -- 0.9      [0, 1]
+      -- distance_stop_animating = 0.5, -- 0.1      > 0
     },
   },
   {
@@ -105,21 +131,30 @@ return {
     lazy = false, -- we don't want to lazy load VimTeX
     init = function()
       -- Use latexmk for compilation and set the output directory to "build"
+      -- vim.g.vimtex_compiler_latexmk_engines = {
+      --   _ = "-lualatex",
+      -- }
       vim.g.vimtex_compiler_method = "latexmk"
       vim.g.vimtex_compiler_latexmk = {
         build_dir = "build", -- output directory
         aux_dir = "build", -- auxiliary files directory
+        executable = "/usr/local/texlive/2026/bin/x86_64-linux/latexmk",
+        callback = 1,
+        continuous = 1,
         options = {
-          "-pdf", -- compile to PDF
-          -- "-interaction=nonstopmode", -- nonstop interaction mode
-          "-synctex=1", -- enable synctex for better forward/backward search
-          "-shell-escape", -- allow shell escapes if needed
+          -- "-lualatex",
+          "-pdf",
+          "-interaction=nonstopmode",
+          "-synctex=1",
+          "-file-line-error",
+          "-shell-escape",
           "-bibtex",
-          -- "-pdflatex=pdflatex",
           "-output-format=pdf",
           "-noemulate-aux-dir",
         },
       }
+      vim.g.vimtex_compiler_progname = "nvr"
+      vim.env.PATH = "/usr/local/texlive/2026/bin/x86_64-linux:" .. vim.env.PATH
       vim.g.vimtex_view_method = "zathura"
       -- vim.g.vimtex_view_method = "mupdf"
       vim.g.vimtex_view_general_viewer = "zathura"
@@ -203,26 +238,26 @@ return {
       },
     },
   },
-  {
-    "nvim-orgmode/orgmode",
-    event = "VeryLazy",
-    config = function()
-      require("orgmode").setup {
-        org_agenda_files = "~/orgfiles/**/*",
-        org_default_notes_file = "~/orgfiles/refile.org",
-      }
-      -- Experimental LSP support
-      vim.lsp.enable "org"
-    end,
-  },
+  -- {
+  --   "nvim-orgmode/orgmode",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("orgmode").setup {
+  --       org_agenda_files = "~/orgfiles/**/*",
+  --       org_default_notes_file = "~/orgfiles/refile.org",
+  --     }
+  --     -- Experimental LSP support
+  --     vim.lsp.enable "org"
+  --   end,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       enable = true, -- Enable this plugin by default
-      max_lines = 7, -- How many lines the window should span (0 = no limit)
-      min_window_height = 15, -- Minimum editor window height to enable context
+      max_lines = 0, -- How many lines the window should span (0 = no limit)
+      min_window_height = 5, -- Minimum editor window height to enable context
       line_numbers = true,
       multiline_threshold = 20, -- Maximum number of lines to show for a single context
       trim_scope = "outer", -- Discard 'inner' or 'outer' lines if max_lines exceeded
@@ -250,6 +285,7 @@ return {
         "markdown_inline",
         "r",
         "rnoweb",
+        "typst",
         "yaml",
         "latex",
         "csv",
