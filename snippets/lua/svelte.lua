@@ -13,8 +13,8 @@ local function get_svelte_blocks()
       trigger = "if",
       description = "Svelte if block",
       format = [[
-{#if {}}
-    {}
+{#if [1]}
+    [2]
 {/if}
 ]],
       nodes = function()
@@ -28,8 +28,8 @@ local function get_svelte_blocks()
       trigger = "each",
       description = "Svelte each block",
       format = [[
-{#each {} as {}}
-    {}
+{#each [1] as [2]}
+    [3]
 {/each}
 ]],
       nodes = function()
@@ -44,12 +44,12 @@ local function get_svelte_blocks()
       trigger = "await",
       description = "Svelte await block",
       format = [[
-{#await {}}
-    {}
-{:then {}}
-    {}
-{:catch {}}
-    {}
+{#await [1]}
+    [2]
+{:then [3]}
+    [4]
+{:catch [5]}
+    [6]
 {/await}
 ]],
       nodes = function()
@@ -67,8 +67,8 @@ local function get_svelte_blocks()
       trigger = "await-then",
       description = "Svelte await block (then shorthand)",
       format = [[
-{#await {} then {}}
-    {}
+{#await [1] then [2]}
+    [3]
 {/await}
 ]],
       nodes = function()
@@ -83,8 +83,8 @@ local function get_svelte_blocks()
       trigger = "key",
       description = "Svelte key block",
       format = [[
-{#key {}}
-    {}
+{#key [1]}
+    [2]
 {/key}
 ]],
       nodes = function()
@@ -98,8 +98,8 @@ local function get_svelte_blocks()
       trigger = "snippet",
       description = "Svelte snippet block (Svelte 5)",
       format = [[
-{#snippet {}({})}
-    {}
+{#snippet [1]([2])}
+    [3]
 {/snippet}
 ]],
       nodes = function()
@@ -115,17 +115,17 @@ local function get_svelte_blocks()
       description = "SvelteKit page component",
       format = [[
 <script lang="ts">
-    {}
+    [1]
 </script>
 
 <svelte:head>
-    <title>{}</title>
+    <title>[2]</title>
 </svelte:head>
 
-{}
+[3]
 
 <style>
-    {}
+    [4]
 </style>
 ]],
       nodes = function()
@@ -141,23 +141,19 @@ local function get_svelte_blocks()
 end
 
 -- Convert the table of block definitions into LuaSnip snippets
-function M.setup()
-  local snippets = {}
+local snippets = {}
 
-  for _, block in ipairs(get_svelte_blocks()) do
-    -- Generate the formatted nodes using standard LuaSnip fmt
-    local formatted_nodes = fmt(block.format, block.nodes())
+for _, block in ipairs(get_svelte_blocks()) do
+  -- Generate the formatted nodes using standard LuaSnip fmt with [] delimiters
+  local formatted_nodes = fmt(block.format, block.nodes(), { delimiters = "[]" })
 
-    -- Create the snippet using native ls.snippet syntax
-    local snippet = s({
-      trig = block.trigger,
-      dscr = block.description,
-    }, formatted_nodes)
+  -- Create the snippet using native ls.snippet syntax
+  local snippet = s({
+    trig = block.trigger,
+    dscr = block.description,
+  }, formatted_nodes)
 
-    table.insert(snippets, snippet)
-  end
-
-  ls.add_snippets("svelte", snippets)
+  table.insert(snippets, snippet)
 end
 
-return M
+return snippets

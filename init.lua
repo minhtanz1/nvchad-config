@@ -1,3 +1,11 @@
+local orig_win_set_cursor = vim.api.nvim_win_set_cursor
+vim.api.nvim_win_set_cursor = function(win, pos)
+  if pos and pos[2] and pos[2] < 0 then
+    pos[2] = 0
+  end
+  return orig_win_set_cursor(win, pos)
+end
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
